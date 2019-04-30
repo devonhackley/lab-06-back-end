@@ -2,10 +2,12 @@
 
 require('dotenv').config();
 
+const cors = require('cors');
 const express = require('express');
 const app = express();
+app.use(cors());
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 const Location = function(obj){
   this.search_query = obj.results[0].address_components[0].long_name;
