@@ -24,17 +24,25 @@ const Weather = function(obj) {
 };
 
 app.get('/location', (request, response) => {
-  let geoData = require('./data/geo.json');
-  const loc = new Location(geoData);
-  response.send(loc);
+  try {
+    let geoData = require('./data/geo.json');
+    const loc = new Location(geoData);
+    response.send(loc);
+  } catch(e) {
+    response.status(500).send('Sorry something went wrong!');
+  }
 });
 
 app.get('/weather', (request, response) => {
-  let weatherData = require('./data/darksky.json');
-  weatherData.daily.data.forEach(element => {
-    new Weather(element);
-  });
-  response.send(weatherArr);
+  try {
+    let weatherData = require('./data/darksky.json');
+    weatherData.daily.data.forEach(element => {
+      new Weather(element);
+    });
+    response.send(weatherArr);
+  } catch(e) {
+    response.status(500).send('Sorry something went wrong!');
+  }
 });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
