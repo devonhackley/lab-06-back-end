@@ -13,8 +13,8 @@ const weatherArr = [];
 const Location = function(obj){
   this.search_query = obj.results[0].address_components[0].long_name;
   this.formatted_query = obj.results[0].formatted_address;
-  this.latitude = obj.results[0].geometry.bounds.northeast.lat;
-  this.longitude = obj.results[0].geometry.bounds.northeast.lng;
+  this.latitude = obj.results[0].geometry.location.lat;
+  this.longitude = obj.results[0].geometry.location.lng;
 };
 
 const Weather = function(obj) {
