@@ -22,14 +22,16 @@ const Weather = function(obj) {
   this.time = new Date(obj.time * 1000).toString().slice(0, 15);
   weatherArr.push(this);
 };
-
+const handleErrors = function(res) {
+  res.status(500).send('Sorry something went wrong!');
+};
 app.get('/location', (request, response) => {
   try {
     let geoData = require('./data/geo.json');
     const loc = new Location(geoData);
     response.send(loc);
   } catch(e) {
-    response.status(500).send('Sorry something went wrong!');
+    handleErrors(response);
   }
 });
 
@@ -41,7 +43,7 @@ app.get('/weather', (request, response) => {
     });
     response.send(weatherArr);
   } catch(e) {
-    response.status(500).send('Sorry something went wrong!');
+    handleErrors(response);
   }
 });
 
