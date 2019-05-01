@@ -1,4 +1,36 @@
-# lab-06-back-end
+## Project Name
+City Explorer - Lab-06
+
+## Author
+Roger Huba & Devon Hackley
+
+## Version 
+1.0.0 - Initial Commit 
+1.0.1 - Feature 1
+1.0.2 - Feature 2
+1.0.3 - Feature 3
+
+## Overview
+Using a pre-made front end, the site will call for JSON and API data to display on the screen.
+
+## Getting Started
+npm init
+npm -i cors
+npm -i express
+npm -i dotenv
+heroku create
+git push heroku master
+
+## Architecture
+JavaScript, HTML, CSS, NPM (express, dotenv, cors, nodemon, live-server)
+
+## Change Log
+https://github.com/devonhackley/lab-06-back-end/pulls?q=is%3Apr+is%3Aclosed
+
+## Credits and Collaborations
+CodeFellows City Explorer Code
+
+## Feature Adds
 
 Number and name of feature: 1.location
 
