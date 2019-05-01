@@ -13,8 +13,8 @@ const weatherArr = [];
 const Location = function(obj){
   this.search_query = obj.results[0].address_components[0].long_name;
   this.formatted_query = obj.results[0].formatted_address;
-  this.latitude = obj.results[0].geometry.bounds.northeast.lat;
-  this.longitude = obj.results[0].geometry.bounds.northeast.lng;
+  this.latitude = obj.results[0].geometry.location.lat;
+  this.longitude = obj.results[0].geometry.location.lng;
 };
 
 const Weather = function(obj) {
@@ -22,14 +22,16 @@ const Weather = function(obj) {
   this.time = new Date(obj.time * 1000).toString().slice(0, 15);
   weatherArr.push(this);
 };
-
+const handleErrors = function(res) {
+  res.status(500).send('Sorry something went wrong!');
+};
 app.get('/location', (request, response) => {
   try {
     let geoData = require('./data/geo.json');
     const loc = new Location(geoData);
     response.send(loc);
   } catch(e) {
-    response.status(500).send('Sorry something went wrong!');
+    handleErrors(response);
   }
 });
 
@@ -41,7 +43,7 @@ app.get('/weather', (request, response) => {
     });
     response.send(weatherArr);
   } catch(e) {
-    response.status(500).send('Sorry something went wrong!');
+    handleErrors(response);
   }
 });
 
