@@ -1,8 +1,10 @@
-# Project Name
+## Project Name
+City Explorer - Lab-06
 
-**Author**: Roger Huba & Devon Hackley
+## Author
+Roger Huba & Devon Hackley
 
-**Version**: 
+## Version 
 1.0.0 - Initial Commit 
 1.0.1 - Feature 1
 1.0.2 - Feature 2
